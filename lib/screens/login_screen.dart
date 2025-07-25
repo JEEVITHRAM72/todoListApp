@@ -60,22 +60,48 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               _loading
                   ? const CircularProgressIndicator()
-                  : ElevatedButton.icon(
-                      icon: Image.asset(
-                        'assets/google_logo.png',
-                        height: 24,
-                        width: 24,
-                      ),
-                      label: const Text('Sign in with Google'),
+                  : ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
                         minimumSize: const Size(double.infinity, 48),
-                        textStyle: const TextStyle(fontSize: 18),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          side: const BorderSide(color: Colors.grey),
+                        ),
                         elevation: 2,
-                        side: const BorderSide(color: Colors.grey),
+                        padding: EdgeInsets.zero, // Remove default padding for better alignment
                       ),
                       onPressed: _handleSignIn,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 40,
+                            width: 40,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'assets/google_logo.png',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          const Text(
+                            'Continue with Google',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
             ],
           ),
